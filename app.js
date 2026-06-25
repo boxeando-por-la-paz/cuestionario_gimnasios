@@ -315,19 +315,39 @@ function inicializarBuscador() {
     const selectEstado = document.getElementById('selectEstado');
     if(!selectEstado) return;
     selectEstado.innerHTML = '<option value="" disabled selected>Seleccione Estado...</option>';
-    Object.keys(bdGimnasios).sort().forEach(edo => selectEstado.add(new Option(edo, edo)));
+    
+    // Detectamos en qué página estamos
+    const esConcertacion = window.location.href.includes('concertacion.html');
+    const fuenteDatos = esConcertacion ? catEdoMun : bdGimnasios;
+    
+    Object.keys(fuenteDatos).sort().forEach(edo => selectEstado.add(new Option(edo, edo)));
 }
 
 function cargarMunicipios() {
     const estadoSel = document.getElementById('selectEstado').value;
     const selectMun = document.getElementById('selectMunicipio');
     const selectGim = document.getElementById('selectGimnasio');
+    const esConcertacion = window.location.href.includes('concertacion.html');
+
     selectMun.innerHTML = '<option value="" disabled selected>Seleccione Municipio...</option>';
-    selectGim.innerHTML = '<option value="" disabled selected>Seleccione...</option>';
-    selectGim.disabled = true;
-    if (bdGimnasios && bdGimnasios[estadoSel]) {
-        Object.keys(bdGimnasios[estadoSel]).sort().forEach(mun => selectMun.add(new Option(mun, mun)));
-        selectMun.disabled = false;
+    
+    if (selectGim && selectGim.tagName === 'SELECT') {
+        selectGim.innerHTML = '<option value="" disabled selected>Seleccione...</option>';
+        selectGim.disabled = true;
+    }
+
+    if (esConcertacion) {
+        // Lógica para los 32 estados de Concertación
+        if (catEdoMun && catEdoMun[estadoSel]) {
+            catEdoMun[estadoSel].sort().forEach(mun => selectMun.add(new Option(mun, mun)));
+            selectMun.disabled = false;
+        }
+    } else {
+        // Lógica para los 18 estados del Cuestionario Regular
+        if (bdGimnasios && bdGimnasios[estadoSel]) {
+            Object.keys(bdGimnasios[estadoSel]).sort().forEach(mun => selectMun.add(new Option(mun, mun)));
+            selectMun.disabled = false;
+        }
     }
 }
 
