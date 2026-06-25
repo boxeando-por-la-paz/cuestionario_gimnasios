@@ -120,61 +120,27 @@
                                 <input type="text" id="inputTutorRegistro" name="inputTutorRegistro" class="form-control bg-light" readonly placeholder="Se asigna automáticamente">
                             </div>
                             
-                            <div class="col-12">
-                                <div id="boxDomicilio" class="box-validation">
-                                    <p class="fw-bold text-primary mb-2">VERIFICACIÓN DE DOMICILIO</p>
-                                    <label class="form-label">¿Corresponde el domicilio registrado? *</label>
-                                    <select id="selectCorresponde" name="selectCorresponde" class="form-select" onchange="evaluarDomicilio()" required>
-                                        <option value="" selected disabled>...</option>
-                                        <option value="SÍ">SÍ</option>
-                                        <option value="NO">NO</option>
-                                    </select>
-                                    
-                                    <div id="campoDireccionOtros" class="hidden-field mt-3">
-                                        <div class="p-3 border rounded bg-light border-danger">
-                                            <label class="form-label fw-bold text-danger mb-3">Capture los datos de la dirección correcta: *</label>
-                                            <div class="row g-2">
-                                                <div class="col-md-8"><label class="form-label small fw-bold">Calle *</label><input type="text" id="dir_calle" class="form-control form-control-sm uppercase clean-direccion" placeholder="Nombre de la calle"></div>
-                                                <div class="col-md-2"><label class="form-label small fw-bold">Num. Ext *</label><input type="text" id="dir_ext" class="form-control form-control-sm uppercase clean-direccion" placeholder="Ej. 123"></div>
-                                                <div class="col-md-2"><label class="form-label small fw-bold">Num. Int</label><input type="text" id="dir_int" class="form-control form-control-sm uppercase clean-direccion" placeholder="Opcional"></div>
-                                                <div class="col-md-4"><label class="form-label small fw-bold">Colonia *</label><input type="text" id="dir_colonia" class="form-control form-control-sm uppercase clean-direccion" placeholder="Colonia"></div>
-                                                <div class="col-md-2"><label class="form-label small fw-bold">C.P. *</label><input type="number" id="dir_cp" class="form-control form-control-sm clean-direccion" placeholder="5 dígitos"></div>
-                                                <div class="col-md-3"><label class="form-label small fw-bold">Estado *</label><select id="dir_estado" class="form-select form-select-sm clean-direccion" onchange="cargarMunicipiosDireccion()"><option value="" disabled selected>Estado...</option></select></div>
-                                                <div class="col-md-3"><label class="form-label small fw-bold">Municipio/Alcaldía *</label><select id="dir_municipio" class="form-select form-select-sm clean-direccion" onchange="concatenarDireccion()"><option value="" disabled selected>Municipio...</option></select></div>
-                                            </div>
-                                            <input type="hidden" id="inputDireccionOtros" name="inputDireccionOtros">
-                                        </div>
-                                    </div>
-                                </div>
+<div class="d-none">
+                                <select id="selectCorresponde" name="selectCorresponde"><option value=""></option></select>
+                                <input type="text" id="dir_calle">
+                                <input type="text" id="dir_ext">
+                                <input type="text" id="dir_int">
+                                <input type="text" id="dir_colonia">
+                                <input type="number" id="dir_cp">
+                                <select id="dir_estado"><option value=""></option></select>
+                                <select id="dir_municipio"><option value=""></option></select>
+                                <input type="hidden" id="inputDireccionOtros" name="inputDireccionOtros">
                             </div>
 
                             <div class="d-none">
                                 <input type="file" id="fotoFachada1" name="fotoFachada1" class="form-control">
                                 <input type="file" id="fotoFachada2" name="fotoFachada2" class="form-control">
                             </div>                            
-                            <!-- LOS 3 KILL SWITCHES AGRUPADOS AL FINAL DEL PASO 1 -->
-                            <div class="col-12 mt-4 pt-3 border-top">
-                                <h5 class="fw-bold text-danger text-center mb-3">VALIDACIÓN DE ACCESO AL CUESTIONARIO</h5>
-                                <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <div class="box-validation bg-light" id="boxAbierta">
-                                            <label class="form-label fw-bold text-primary">¿La sucursal se encuentra abierta? *</label>
-                                            <select id="selectAbierta" name="selectAbierta" class="form-select text-center fw-bold border-primary" onchange="evaluarKillSwitches()" required><option value="" selected disabled>...</option><option value="SÍ">SÍ</option><option value="NO">NO</option></select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="box-validation bg-light" id="boxTutorPresente">
-                                            <label class="form-label fw-bold text-primary">¿El Tutor se encontraba presente? *</label>
-                                            <select id="selectTutorPresente" name="selectTutorPresente" class="form-select text-center fw-bold border-primary" onchange="evaluarKillSwitches()" required><option value="" selected disabled>...</option><option value="SÍ">SÍ</option><option value="NO">NO</option></select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="box-validation bg-light" id="boxQuiere">
-                                            <label class="form-label fw-bold text-primary">¿El Tutor quiere participar en la Estrategia? *</label>
-                                            <select id="selectQuiere" name="selectQuiere" class="form-select text-center fw-bold border-primary" onchange="evaluarKillSwitches()" required><option value="" selected disabled>...</option><option value="SÍ">SÍ</option><option value="NO">NO</option></select>
-                                        </div>
-                                    </div>
-                                </div>
+                            <!-- AQUÍ IBAN LOS 3 KILL SWITCHES AGRUPADOS AL FINAL DEL PASO 1 -->
+                            <div class="d-none">
+                                <select id="selectAbierta" name="selectAbierta"><option value=""></option></select>
+                                <select id="selectTutorPresente" name="selectTutorPresente"><option value=""></option></select>
+                                <select id="selectQuiere" name="selectQuiere"><option value=""></option></select>
                             </div>
 
                         </div>
@@ -196,9 +162,8 @@
                            <div class="d-none">
                                 <input type="file" id="fotoTutorFile" name="fotoTutorFile">
                                 <input type="email" id="email_tutor" name="email_tutor">
-                            </div>                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Correo electrónico adicional *</label>
-                                <input type="email" id="email_adicional" name="email_adicional" class="form-control validate-email" required placeholder="ejemplo2@correo.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                            </div>                            <div class="d-none">
+                                <input type="email" id="email_adicional" name="email_adicional">
                             </div>
 
                             <div class="col-md-12 mb-3 mt-4">
@@ -236,19 +201,9 @@
                         <span class="section-title">Validación Final de Visita y Documentos</span>
                         <div class="row g-3">
                             
-                            <div class="col-12 mt-3">
-                                <div class="box-validation" id="boxCoincideGym">
-                                    <label class="form-label fw-bold">¿El nombre del gimnasio coincide con el registrado? *</label>
-                                    <select id="selectCoincideGym" name="selectCoincideGym" class="form-select" onchange="toggleCoincideGym()" required>
-                                        <option value="" selected disabled>...</option>
-                                        <option value="SÍ">SÍ</option>
-                                        <option value="NO">NO</option>
-                                    </select>
-                                    <div id="divNuevoGym" class="hidden-field mt-3">
-                                        <label class="form-label fw-bold text-danger">Introduce el nombre correcto del gimnasio *</label>
-                                        <input type="text" id="inputNuevoGym" name="inputNuevoGym" class="form-control uppercase clean-input">
-                                    </div>
-                                </div>
+                            <div class="d-none">
+                                <select id="selectCoincideGym" name="selectCoincideGym"><option value=""></option></select>
+                                <input type="text" id="inputNuevoGym" name="inputNuevoGym">
                             </div>
 
 <div class="d-none">
