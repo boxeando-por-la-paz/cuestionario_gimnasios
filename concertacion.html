@@ -88,8 +88,11 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label fw-bold">Gimnasio *</label> 
+                                <!-- Select fantasma para evitar errores en app.js -->
                                 <select id="selectGimnasio" class="d-none"></select>
-                                <input type="text" name="selectGimnasio" class="form-control uppercase clean-input" required placeholder="Escribe el nombre del gimnasio">
+                                <!-- Input real para texto libre (Con alerta de símbolos) -->
+                                <input type="text" name="selectGimnasio" class="form-control uppercase clean-input" required placeholder="Escribe el nombre del gimnasio" oninput="let val = this.value.toUpperCase(); let limpio = val.replace(/[^A-Z0-9\sÑ]/g, ''); if(val !== limpio) { document.getElementById('alertaGym').style.display='block'; setTimeout(() => document.getElementById('alertaGym').style.display='none', 3500); } this.value = limpio;">
+                                <small id="alertaGym" class="text-danger fw-bold mt-1" style="display: none; font-size: 0.8em;">⚠️ Solo se permiten letras y números</small>
                             </div>
 
                             <div class="col-md-4">
@@ -116,9 +119,9 @@
                                 <textarea id="obs_subtipo" name="obs_subtipo" class="form-control uppercase clean-input" rows="2" placeholder="Describe detalladamente e incluye el nombre de la dependencia, del parque, plaza, etcétera" oninput="actualizarContador(this, 10, 'counter_subtipo')"></textarea>
                             </div>
 
-                            <div class="col-md-12">
-                                <label class="form-label fw-bold">Nombre de Tutor *</label>
-                                <input type="text" id="inputTutorRegistro" name="inputTutorRegistro" class="form-control uppercase clean-input" required placeholder="Escribe el nombre completo del tutor" onblur="validarNombres()">
+                            <!-- TUTOR REGISTRO OCULTO (PASO 1) -->
+                            <div class="d-none">
+                                <input type="text" id="inputTutorRegistro" name="inputTutorRegistro">
                             </div>
                             
 <div class="col-12 mt-3">
@@ -161,8 +164,8 @@
                         <div class="row g-3">
                             
                             <div class="col-md-12">
-                                <label class="form-label fw-bold">Nombre de quien atiende *</label>
-                                <input type="text" id="nombrePersonaAtiende" name="nombrePersonaAtiende" class="form-control uppercase clean-input" required onblur="validarNombres()">
+                                <label class="form-label fw-bold">Nombre de Tutor *</label>
+                                <input type="text" id="nombrePersonaAtiende" name="nombrePersonaAtiende" class="form-control uppercase clean-input" required onblur="validarNombres()" placeholder="Escribe el nombre completo">
                             </div>
                             
                             <div class="col-md-6"><label class="form-label fw-bold text-primary">Anverso Identificación (INE) *</label><input type="file" id="fotoIneAnverso" name="fotoIneAnverso" class="form-control" accept="image/*" required></div>
