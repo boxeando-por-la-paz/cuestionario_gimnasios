@@ -411,16 +411,26 @@ function evaluarDomicilio() {
 
 function inicializarBuscadorDireccion() {
     const selectEdo = document.getElementById('dir_estado');
-    if(!selectEdo) return;
+    // Si no existe o si no es un menú desplegable, nos detenemos aquí
+    if(!selectEdo || selectEdo.tagName !== 'SELECT') return;
     selectEdo.innerHTML = '<option value="" disabled selected>Estado...</option>';
     Object.keys(catEdoMun).sort().forEach(edo => selectEdo.add(new Option(edo, edo)));
 }
 
 function cargarMunicipiosDireccion() {
-    const edoSel = document.getElementById('dir_estado').value;
+    const edoSel = document.getElementById('dir_estado') ? document.getElementById('dir_estado').value : "";
     const selectMun = document.getElementById('dir_municipio');
+    
+    // Si no es un menú desplegable, solo concatenamos y salimos
+    if(!selectMun || selectMun.tagName !== 'SELECT') {
+        concatenarDireccion();
+        return;
+    }
+    
     selectMun.innerHTML = '<option value="" disabled selected>Municipio...</option>';
-    if (catEdoMun[edoSel]) catEdoMun[edoSel].sort().forEach(mun => selectMun.add(new Option(mun, mun)));
+    if (edoSel && catEdoMun[edoSel]) {
+        catEdoMun[edoSel].sort().forEach(mun => selectMun.add(new Option(mun, mun)));
+    }
     concatenarDireccion();
 }
 
