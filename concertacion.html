@@ -148,9 +148,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6"><label class="form-label fw-bold text-primary">Fotografía fachada exterior 1 *</label><input type="file" id="fotoFachada1" name="fotoFachada1" class="form-control" accept="image/*" required></div>
-                            <div class="col-md-6"><label class="form-label fw-bold text-primary">Fotografía fachada exterior 2 *</label><input type="file" id="fotoFachada2" name="fotoFachada2" class="form-control" accept="image/*" required></div>
-                            
+                            <div class="d-none">
+                                <input type="file" id="fotoFachada1" name="fotoFachada1" class="form-control">
+                                <input type="file" id="fotoFachada2" name="fotoFachada2" class="form-control">
+                            </div>                            
                             <!-- LOS 3 KILL SWITCHES AGRUPADOS AL FINAL DEL PASO 1 -->
                             <div class="col-12 mt-4 pt-3 border-top">
                                 <h5 class="fw-bold text-danger text-center mb-3">VALIDACIÓN DE ACCESO AL CUESTIONARIO</h5>
@@ -192,19 +193,10 @@
                             <div class="col-md-6"><label class="form-label fw-bold text-primary">Anverso Identificación (INE) *</label><input type="file" id="fotoIneAnverso" name="fotoIneAnverso" class="form-control" accept="image/*" required></div>
                             <div class="col-md-6"><label class="form-label fw-bold text-primary">Reverso Identificación (INE) *</label><input type="file" id="fotoIneReverso" name="fotoIneReverso" class="form-control" accept="image/*" required></div>
                             
-                            <div class="col-12">
-                                <div class="p-3 mb-2 rounded foto-destacada">
-                                    <label class="form-label fw-bold text-primary">📷 Selfie del Tutor *</label>
-                                    <input type="file" class="form-control border-success" id="fotoTutorFile" name="fotoTutorFile" accept="image/*" required>
-                                </div>
-                            </div>
-                            
-                            <!-- CORREOS UBICADOS DESPUÉS DE LA FOTO DEL TUTOR -->
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Correo electrónico del tutor *</label>
-                                <input type="email" id="email_tutor" name="email_tutor" class="form-control validate-email" required placeholder="ejemplo@correo.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
-                            </div>
-                            <div class="col-md-6">
+                           <div class="d-none">
+                                <input type="file" id="fotoTutorFile" name="fotoTutorFile">
+                                <input type="email" id="email_tutor" name="email_tutor">
+                            </div>                            <div class="col-md-6">
                                 <label class="form-label fw-bold">Correo electrónico adicional *</label>
                                 <input type="email" id="email_adicional" name="email_adicional" class="form-control validate-email" required placeholder="ejemplo2@correo.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
                             </div>
@@ -215,23 +207,9 @@
                                 <input type="number" id="capacidad_total_tutor" name="capacidad_total_tutor" class="form-control" required min="1" step="1" placeholder="Ej. 15">
                             </div>
 
-                            <div class="col-12 mt-3">
-                                <div id="boxInfra" class="box-validation">
-                                    <label class="form-label fw-bold">El gimnasio cuenta con: *</label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-check"><input class="form-check-input check-equipamiento" type="checkbox" name="equipamiento_gimnasio" id="c1" value="Espacio techado"><label class="form-check-label" for="c1">1. Espacio techado para impartir clase</label></div>
-                                            <div class="form-check"><input class="form-check-input check-equipamiento" type="checkbox" name="equipamiento_gimnasio" id="c2" value="Espacio acompañantes"><label class="form-check-label" for="c2">2. Espacio acompañantes</label></div>
-                                            <div class="form-check"><input class="form-check-input check-equipamiento" type="checkbox" name="equipamiento_gimnasio" id="c3" value="Baño"><label class="form-check-label" for="c3">3. Baño</label></div>
-                                            <div class="form-check"><input class="form-check-input check-equipamiento" type="checkbox" name="equipamiento_gimnasio" id="c4" value="Electricidad"><label class="form-check-label" for="c4">4. Electricidad</label></div>
-                                            <div class="form-check"><input class="form-check-input check-equipamiento" type="checkbox" name="equipamiento_gimnasio" id="c5" value="Material deportivo"><label class="form-check-label" for="c5">5. Material deportivo de Box</label></div>
-                                            <div class="form-check"><input class="form-check-input check-equipamiento" type="checkbox" name="equipamiento_gimnasio" id="c6" value="Ninguno de los anteriores"><label class="form-check-label" for="c6">6. Ninguno de los anteriores</label></div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="validarChecksEquipamiento" name="equipamiento_gimnasio" required>
-                                </div>
+                            <div class="d-none">
+                                <input type="hidden" id="validarChecksEquipamiento" name="equipamiento_gimnasio">
                             </div>
-
                             <input type="hidden" id="selectCumpleHorario" name="selectCumpleHorario">
                             
                             <div id="contenedorMatriz" class="col-12 mb-4">
@@ -273,31 +251,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4"><label class="form-label fw-bold text-primary">Evidencia Espacio 1 *</label><input type="file" id="fotoEspacio" name="fotoEspacio" class="form-control" accept="image/*" required></div>
-                            <div class="col-md-4"><label class="form-label fw-bold text-primary">Evidencia Espacio 2 *</label><input type="file" id="fotoEspacio2" name="fotoEspacio2" class="form-control" accept="image/*" required></div>
-                            <div class="col-md-4"><label class="form-label fw-bold text-primary">Evidencia Espacio 3 *</label><input type="file" id="fotoEspacio3" name="fotoEspacio3" class="form-control" accept="image/*" required></div>
-
-                            <div class="col-md-12 mt-4">
-                                <label class="form-label fw-bold text-primary h6">Comprobante de domicilio de la SUCURSAL *</label>
-                                <input type="file" id="fotoComprobanteSucursal" name="fotoComprobanteSucursal" class="form-control" accept="image/*,.pdf" required>
+<div class="d-none">
+                                <input type="file" id="fotoEspacio" name="fotoEspacio">
+                                <input type="file" id="fotoEspacio2" name="fotoEspacio2">
+                                <input type="file" id="fotoEspacio3" name="fotoEspacio3">
+                                <input type="file" id="fotoComprobanteSucursal" name="fotoComprobanteSucursal">
+                                <select id="selectCodigoFirmado" name="selectCodigoFirmado"><option value=""></option></select>
+                                <input type="file" id="fotoCodigoAnverso" name="fotoCodigoAnverso">
+                                <input type="file" id="fotoCodigoReverso" name="fotoCodigoReverso">
+                                <input type="file" id="fotoComprobante" name="fotoComprobante">
                             </div>
-
-                            <div class="col-md-6 mt-4">
-                                <label class="form-label fw-bold">¿El código de conducta fue firmado por el tutor? *</label>
-                                <select id="selectCodigoFirmado" name="selectCodigoFirmado" class="form-select" onchange="gestionarCargaCodigo()" required><option value="" selected disabled>...</option><option value="SÍ">SÍ</option><option value="NO">NO</option></select>
-                            </div>
-
-                            <div id="contenedorDocumentacion" class="row g-3">
-                                <div class="col-md-6"><label class="form-label fw-bold text-primary">Anverso Código CMB *</label><input type="file" id="fotoCodigoAnverso" name="fotoCodigoAnverso" class="form-control" accept="image/*" required></div>
-                                <div class="col-md-6"><label class="form-label fw-bold text-primary">Reverso Código CMB *</label><input type="file" id="fotoCodigoReverso" name="fotoCodigoReverso" class="form-control" accept="image/*" required></div>
-                            </div>
-
-                            <span class="section-title mt-4">Evidencia Documental (No Obligatoria)</span>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-primary">Comprobante de domicilio PERSONAL (Tutor)</label>
-                                    <input type="file" id="fotoComprobante" name="fotoComprobante" class="form-control" accept="image/*,.pdf">
-                                </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold">Evidencia fotográfica complementaria...</label>
                                     <input type="file" id="fotoComplementaria" name="fotoComplementaria" class="form-control" accept="image/*">
