@@ -220,8 +220,16 @@ async function dispararSubidaAsincrona(event) {
         const mimeType = file.type || (base64Data.includes('application/pdf') ? 'application/pdf' : 'image/jpeg');
         const ext = mimeType === 'application/pdf' ? '.pdf' : '.jpg';
         
-        const gym = document.getElementById('selectGimnasio')?.value || "Gym";
-        const tutor = document.getElementById('inputTutorRegistro')?.value || "Tutor";
+        // Detectar qué página está siendo usada
+const esConcertacion = window.location.href.includes('concertacion.html');
+
+// En concertacion: busca nombrePersonaAtiende. En regular: busca inputTutorRegistro
+const tutor = esConcertacion
+    ? (document.getElementById('nombrePersonaAtiende')?.value || "Tutor")
+    : (document.getElementById('inputTutorRegistro')?.value || "Tutor");
+
+// El gimnasio funciona igual en ambas páginas
+const gym = document.getElementById('selectGimnasio')?.value || "Gym";
         const fecha = new Date().toISOString().slice(0,10).replace(/-/g,"");
         const nombreArchivo = `${gym}_${tutor}_${input.id}_${fecha}${ext}`.replace(/\s+/g, '_');
 
