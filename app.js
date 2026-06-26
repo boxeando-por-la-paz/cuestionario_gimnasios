@@ -92,9 +92,9 @@ window.addEventListener('load', () => {
     cargarCatalogos(false);
     generarTablaHorarios();
 
-    document.querySelectorAll('input[type="file"]').forEach(input => {
-        input.addEventListener('change', dispararSubidaAsincrona);
-    });
+    document.querySelectorAll('input[type="file"]:not([style*="display: none"]):not(.d-none)').forEach(input => {
+    input.addEventListener('change', dispararSubidaAsincrona);
+});
 });
 
 function cargarCatalogos(silencioso = false) {
