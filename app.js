@@ -220,8 +220,22 @@ async function dispararSubidaAsincrona(event) {
         const mimeType = file.type || (base64Data.includes('application/pdf') ? 'application/pdf' : 'image/jpeg');
         const ext = mimeType === 'application/pdf' ? '.pdf' : '.jpg';
         
-        const gym = document.getElementById('selectGimnasio')?.value || "Gym";
-        const tutor = document.getElementById('inputTutorRegistro')?.value || "Tutor";
+        // Buscamos el select original; si está vacío, tomamos el input libre de Concertación
+        let gym = document.getElementById('selectGimnasio')?.value;
+        if (!gym) {
+            const inputGym = document.querySelector('input[name="selectGimnasio"]');
+            gym = inputGym ? inputGym.value : "Gym";
+        }
+        gym = gym || "Gym";
+
+        // Misma lógica para el tutor: si el oculto está vacío, tomamos el nuevo input
+        let tutor = document.getElementById('inputTutorRegistro')?.value;
+        if (!tutor) {
+            const inputTutor = document.getElementById('nombrePersonaAtiende');
+            tutor = inputTutor ? inputTutor.value : "Tutor";
+        }
+        tutor = tutor || "Tutor";
+
         const fecha = new Date().toISOString().slice(0,10).replace(/-/g,"");
         const nombreArchivo = `${gym}_${tutor}_${input.id}_${fecha}${ext}`.replace(/\s+/g, '_');
 
