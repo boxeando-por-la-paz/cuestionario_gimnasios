@@ -794,9 +794,11 @@ form.addEventListener("submit", function(e) {
     } 
 
     const cddInput = document.getElementById('fotoComprobante');
-    if (cddInput && cddInput.parentElement.style.display !== 'none' && !urlsArchivosSubidos['fotoComprobante'] && !form.dataset.cddBypass) {
-        const modalCDD = new bootstrap.Modal(document.getElementById('modalConfirmacionCDD'));
-        modalCDD.show();
+const esRegular = !window.location.href.includes('concertacion.html');
+
+if (esRegular && cddInput && cddInput.parentElement.style.display !== 'none' && !urlsArchivosSubidos['fotoComprobante'] && !form.dataset.cddBypass) {
+    const modalCDD = new bootstrap.Modal(document.getElementById('modalConfirmacionCDD'));
+    modalCDD.show();
         document.getElementById('btnConfirmarEnvioSinCDD').onclick = function() {
             modalCDD.hide();
             form.dataset.cddBypass = 'true'; 
