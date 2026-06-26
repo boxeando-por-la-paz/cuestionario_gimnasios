@@ -276,7 +276,8 @@ function liberarBotonSubmit() {
     if (archivosEnProceso <= 0) {
         archivosEnProceso = 0;
         btnSubmit.disabled = false;
-        if (!window.location.href.includes('concertacion.html')) evaluarKillSwitches();
+        if(btnSubmit.innerText.indexOf("FINALIZAR") === -1) btnSubmit.innerText = "FINALIZAR REPORTE";
+        if (!window.location.href.includes('concertacion.html')) evaluarKillSwitches(); 
     }
 }
 
