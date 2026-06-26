@@ -492,7 +492,7 @@ function toggleCoincideGym() {
 function evaluarKillSwitches() {
     if (archivosEnProceso > 0) return; 
 
-    rehabilitarTodo();
+    if (!window.location.href.includes('concertacion.html')) rehabilitarTodo();
     killReasonGlobal = "";
     
     let killId = null;
@@ -579,7 +579,7 @@ function rehabilitarTodo() {
     });
     
     toggleSubTipoEspacio();
-    evaluarDomicilio();
+    if (!window.location.href.includes('concertacion.html')) evaluarDomicilio();
     gestionarCargaCodigo();
     if (document.getElementById('selectCoincideGym')) toggleCoincideGym();
 }
@@ -752,7 +752,7 @@ function reiniciarFormularioCompleto() {
 
     rehabilitarTodo();
     new bootstrap.Tab(document.getElementById('btnTab1')).show();
-    evaluarKillSwitches(); 
+    if (!window.location.href.includes('concertacion.html')) evaluarKillSwitches(); 
     actualizarContadorCola();
     btnSubmit.disabled = false;
     btnSubmit.innerText = "FINALIZAR REPORTE";
