@@ -272,12 +272,13 @@ const gym = document.getElementById('selectGimnasio')?.value || "Gym";
 }
 
 function liberarBotonSubmit() {
+    console.log("liberarBotonSubmit llamada. archivosEnProceso:", archivosEnProceso);
     archivosEnProceso--;
     if (archivosEnProceso <= 0) {
         archivosEnProceso = 0;
         btnSubmit.disabled = false;
         if(btnSubmit.innerText.indexOf("FINALIZAR") === -1) btnSubmit.innerText = "FINALIZAR REPORTE";
-        if (!window.location.href.includes('concertacion.html')) evaluarKillSwitches(); 
+        if (!window.location.href.includes('concertacion.html')) evaluarKillSwitches();
     }
 }
 
