@@ -120,21 +120,9 @@
                             </div>
 
                             <!-- TUTOR REGISTRO OCULTO (PASO 1) -->
-                            // Obtener nombre del gimnasio
-        let gym = document.getElementById('selectGimnasio')?.value;
-        if (!gym) {
-            const inputGym = document.querySelector('input[name="selectGimnasio"]');
-            gym = inputGym ? inputGym.value : "Gym";
-        }
-        gym = gym || "Gym";
-
-        // Obtener nombre del tutor directamente del campo visible
-        const inputTutor = document.getElementById('nombrePersonaAtiende');
-        let tutor = inputTutor ? inputTutor.value : "Tutor";
-        tutor = (tutor && tutor.trim() !== "") ? tutor : "Tutor";
-
-        const fecha = new Date().toISOString().slice(0,10).replace(/-/g,"");
-        const nombreArchivo = `${gym}_${tutor}_${input.id}_${fecha}${ext}`.replace(/\s+/g, '_');
+                            <div class="d-none">
+    <input type="text" id="inputTutorRegistro" name="inputTutorRegistro">
+</div>
                             
 <!-- DIRECCIÓN MANUAL PARA CONCERTACIÓN (Simplificada) -->
                             <div class="col-12 mt-3">
