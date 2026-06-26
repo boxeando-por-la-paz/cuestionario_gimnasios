@@ -91,7 +91,7 @@
                                 <!-- Select fantasma para evitar errores en app.js -->
                                 <select id="selectGimnasio" class="d-none"></select>
                                 <!-- Input real para texto libre (Con alerta de símbolos) -->
-                                <input type="text" name="selectGimnasio" class="form-control uppercase clean-input" required placeholder="Escribe el nombre del gimnasio" oninput="let val = this.value.toUpperCase(); let limpio = val.replace(/[^A-Z0-9\sÑ]/g, ''); if(val !== limpio) { document.getElementById('alertaGym').style.display='block'; setTimeout(() => document.getElementById('alertaGym').style.display='none', 3500); } this.value = limpio;">
+                                <input type="text" id="selectGimnasio" name="selectGimnasio" class="form-control uppercase clean-input" required placeholder="Escribe el nombre del gimnasio" oninput="let val = this.value.toUpperCase(); let limpio = val.replace(/[^A-Z0-9\sÑ]/g, ''); if(val !== limpio) { document.getElementById('alertaGym').style.display='block'; setTimeout(() => document.getElementById('alertaGym').style.display='none', 3500); } this.value = limpio;">
                                 <small id="alertaGym" class="text-danger fw-bold mt-1" style="display: none; font-size: 0.8em;">⚠️ Solo se permiten letras y números</small>
                             </div>
 
