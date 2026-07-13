@@ -763,6 +763,15 @@ function reiniciarFormularioCompleto() {
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     
+    // Validar nombres duplicados al momento de enviar
+    const srv = document.getElementById('nombre_visitante').value.trim().toUpperCase();
+    const atn = document.getElementById('nombrePersonaAtiende').value.trim().toUpperCase();
+    if (srv !== "" && srv === atn) {
+        new bootstrap.Tab(document.getElementById('btnTab2')).show();
+        document.getElementById('nombrePersonaAtiende').value = "";
+        return alert("⚠️ El Servidor Público visitante y la persona que atiende no pueden ser la misma.");
+    }
+
     const obsSub = document.getElementById('obs_subtipo');
     if (obsSub.required && obsSub.value.length < 10) {
         new bootstrap.Tab(document.getElementById('btnTab1')).show();
