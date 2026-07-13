@@ -793,6 +793,29 @@ form.addEventListener("submit", function(e) {
         return alert("⚠️ Falta llenar campos obligatorios.");
     } 
 
+    // === NUEVA VALIDACIÓN ESTRICTA DE FOTOS ===
+    let fotosFaltantes = false;
+    
+    // Solo buscamos las fotos que en este momento tengan el atributo 'required'
+    // (Los Kill Switches y lógicas dinámicas ya se encargan de quitarle el 'required' a las que no aplican)
+    const inputsFotoRequeridos = form.querySelectorAll('input[type="file"][required]');
+    
+    inputsFotoRequeridos.forEach(input => {
+        // Verificamos si la foto realmente logró procesarse y guardarse en nuestro objeto
+        if (!urlsArchivosSubidos[input.id]) {
+            fotosFaltantes = true;
+            input.classList.add('is-invalid'); // Lo marcamos en rojo
+            input.value = ""; // Limpiamos el campo visualmente para obligar al usuario a re-seleccionarlo
+        } else {
+            input.classList.remove('is-invalid');
+        }
+    });
+
+    if (fotosFaltantes) {
+        return alert("⚠️ Algunas fotos requeridas no se procesaron correctamente en la memoria del teléfono. Por favor, vuelve a seleccionar los archivos en los recuadros marcados en rojo.");
+    }
+    // ==========================================
+
     const cddInput = document.getElementById('fotoComprobante');
 const esRegular = !window.location.href.includes('concertacion.html');
 
