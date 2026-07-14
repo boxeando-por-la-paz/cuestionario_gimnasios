@@ -537,6 +537,12 @@ function aplicarBarredoraDOM(triggerId, reason, exceptIDs) {
             el.required = false;
             el.removeAttribute('required');
         }
+        
+        // Apagar temporalmente el atributo 'pattern' si existe
+        if (el.hasAttribute('pattern')) {
+            el.setAttribute('data-was-pattern', el.getAttribute('pattern'));
+            el.removeAttribute('pattern');
+        }
 
         const box = el.closest('div[class^="col-"], div.box-validation');
         if(box) box.classList.add('section-disabled');
@@ -550,10 +556,13 @@ function aplicarBarredoraDOM(triggerId, reason, exceptIDs) {
         } else if (el.type === "checkbox" || el.type === "radio") {
             el.checked = false;
         } else {
-            if(el.type === "email") el.type = "text"; 
+            // Guardar el tipo original y pasarlo a texto (evita errores con type="number" y pattern)
+            if (el.type !== "text" && el.type !== "hidden") {
+                el.setAttribute('data-was-type', el.type);
+                el.type = "text";
+            }
             el.value = reason;
-        }
-    }
+        }    }
 }
 
 function rehabilitarTodo() {
@@ -570,12 +579,24 @@ function rehabilitarTodo() {
             el.removeAttribute('data-was-required');
         }
 
+        // Devolverle el atributo 'pattern'
+        if (el.hasAttribute('data-was-pattern')) {
+            el.setAttribute('pattern', el.getAttribute('data-was-pattern'));
+            el.removeAttribute('data-was-pattern');
+        }
+
         if (el.value && el.value.startsWith("Cuestionario cerrado")) {
             if (el.tagName === "SELECT") el.value = "";
             else el.value = "";
-            if(el.id && el.id.includes("email")) el.type = "email"; 
-        }
-        if (el.type === "file" && urlsArchivosSubidos[el.id] && urlsArchivosSubidos[el.id].startsWith("Cuestionario cerrado")) {
+            
+            // Devolverle su tipo original (email, number, etc.)
+            if (el.hasAttribute('data-was-type')) {
+                el.type = el.getAttribute('data-was-type');
+                el.removeAttribute('data-was-type');
+            } else if (el.id && el.id.includes("email")) {
+                el.type = "email"; // Por si quedó alguno atorado con la versión anterior
+            }
+        }        if (el.type === "file" && urlsArchivosSubidos[el.id] && urlsArchivosSubidos[el.id].startsWith("Cuestionario cerrado")) {
             delete urlsArchivosSubidos[el.id];
         }
     });
