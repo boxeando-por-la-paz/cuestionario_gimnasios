@@ -400,7 +400,7 @@ function toggleSubTipoEspacio() {
         selSubTipo.required = true; txtObs.required = true;
 
         if (tipo === "Espacio público") {
-            ["Cancha pública", "Parque", "Calle", "Camellón", "Bajopuente", "Kiosco", "Plaza pública", "Explanada"].forEach(opt => selSubTipo.add(new Option(opt, opt)));
+            ["Cancha pública", "Parque", "Calle", "Camellón", "Bajopuente", "Kiosco", "Plaza pública", "Explanada", "Escuela"].forEach(opt => selSubTipo.add(new Option(opt, opt)));
         } else if (tipo === "Inmueble gubernamental") {
             ["Edificio de gobierno", "Comisaría", "Deportivo Gubernamental", "Ayuntamiento", "DIF", "Bomberos", "CFE", "Canchas multiusos", "Foros al aire libre", "Patio o jardín de edificio gubernamental", "Explanada"].forEach(opt => selSubTipo.add(new Option(opt, opt)));
             if (estado === "CIUDAD DE MÉXICO") selSubTipo.add(new Option("PILARES", "PILARES"));
